@@ -1,0 +1,44 @@
+## Unity 生成的目录（不需要纳入版本管理） ##
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+## Unity 崩溃日志与性能数据 ##
+sysinfo.txt
+*.stackdump
+crashlytics-build.properties
+
+## 自动生成的 IDE 工程文件 ##
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+## 构建产物 ##
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.ipa
+
+## 操作系统 ##
+.DS_Store
+Thumbs.db
+desktop.ini
