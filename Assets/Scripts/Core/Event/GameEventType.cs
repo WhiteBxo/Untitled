@@ -1,4 +1,4 @@
-namespace Untitled.Core
+namespace Untitled
 {
     public enum GameEventType
     {

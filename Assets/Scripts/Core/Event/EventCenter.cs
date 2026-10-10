@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Untitled.Core
+namespace Untitled
 {
     public static class EventCenter
     {

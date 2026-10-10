@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Untitled.Core
+namespace Untitled
 {
     public abstract class EntityBase : MonoBehaviour
     {

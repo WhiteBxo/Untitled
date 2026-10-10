@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Untitled.Core
+namespace Untitled
 {
     public abstract class ManagerBase<T> where T : ManagerBase<T>
     {

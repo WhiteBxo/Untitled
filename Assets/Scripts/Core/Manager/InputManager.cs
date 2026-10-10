@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Untitled.Core
+namespace Untitled
 {
     public class InputManager : ManagerBase<InputManager>
     {

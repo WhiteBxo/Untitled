@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Untitled.Core
+namespace Untitled
 {
     [DefaultExecutionOrder(100)]
     public class SpriteBillboard : MonoBehaviour
