@@ -9,7 +9,5 @@ namespace Untitled
         public ItemType Type;
         public string Description;
         public Sprite Icon;
-        public bool Stackable;
-        public int MaxStack;
     }
 }

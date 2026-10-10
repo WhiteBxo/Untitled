@@ -6,5 +6,11 @@ namespace Untitled
     {
         public int Id;
         public int Num;
+
+        public ItemData(int id, int num)
+        {
+            Id = id;
+            Num = num;
+        }
     }
 }

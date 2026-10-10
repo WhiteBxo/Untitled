@@ -2,16 +2,14 @@ using UnityEngine;
 
 namespace Untitled
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : ManagerBase<GameManager>
     {
-        // Start is called before the first frame update
-        void Start()
+        public GameData GameData;
+        
+        public override void Initialize()
         {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
+            base.Initialize();
+            GameData = new GameData();
         }
     }
 }
