@@ -12,7 +12,8 @@ namespace Untitled
         protected override void Update()
         {
             Vector2 moveInput = InputManager.Instance.MoveInput;
-            Move(Speed * Time.deltaTime * moveInput);
+            float speed = Speed * DebugManager.Instance.MoveSpeedMultiplier;
+            Move(speed * Time.deltaTime * moveInput);
         }
 
         protected override void Move(Vector2 moveDelta)

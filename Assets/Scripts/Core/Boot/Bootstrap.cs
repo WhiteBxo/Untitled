@@ -10,6 +10,7 @@ namespace Untitled
             RegisterManager(new InputManager());
             RegisterManager(new UIManager());
             RegisterManager(new InteractManager());
+            RegisterManager(new DebugManager());
         }
 
         private void RegisterManager<T>(ManagerBase<T> manager) where T : ManagerBase<T>
