@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Untitled
 {
@@ -8,6 +8,7 @@ namespace Untitled
         [SerializeField] private float viewAngle = 45f;
         [SerializeField] private float distance = 7.07f;
         [SerializeField] private float damping = 8f;
+        [SerializeField] private Vector3 focusOffset;
 
         public Transform Target => target;
 
@@ -20,7 +21,7 @@ namespace Untitled
             get
             {
                 float pitch = viewAngle * Mathf.Deg2Rad;
-                return new Vector3(0f, Mathf.Sin(pitch), -Mathf.Cos(pitch)) * distance;
+                return focusOffset + new Vector3(0f, Mathf.Sin(pitch), -Mathf.Cos(pitch)) * distance;
             }
         }
 

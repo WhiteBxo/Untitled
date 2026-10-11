@@ -6,6 +6,7 @@ namespace Untitled
     public class SpriteBillboard : MonoBehaviour
     {
         [SerializeField] private Camera targetCamera;
+        [SerializeField] private bool keepUpright;
 
         private void Awake()
         {
@@ -16,7 +17,9 @@ namespace Untitled
         {
             if (targetCamera == null) return;
 
-            transform.rotation = targetCamera.transform.rotation;
+            transform.rotation = keepUpright
+                ? Quaternion.Euler(0f, targetCamera.transform.eulerAngles.y, 0f)
+                : targetCamera.transform.rotation;
         }
     }
 }

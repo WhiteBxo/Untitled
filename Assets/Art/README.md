@@ -5,6 +5,7 @@
 | 目录 | 内容 |
 | --- | --- |
 | `Sprites/Player.gif` | 玩家图像 |
+| `Sprites/goblin.png` | 沿用 Godot 项目的哥布林像素原图，第一步测试房间使用 |
 | `Sprites/Terrain/Cave` | 洞穴地面、墙面与地形图集 |
 | `Sprites/Props/Kitchen` | 铁锅、柴火、食材、水槽、工作台、晾肉架 |
 | `Sprites/Props/Camp` | 帐篷、草床、木刺、训练假人 |
@@ -26,6 +27,7 @@
 ## 使用注意
 
 - PNG Sprite 当前为 `Single`、`Point` 过滤、关闭 mipmaps、无压缩，PPU 为 `150`，pivot 为底部居中，mesh 为 `Full Rect`。
+- `goblin.png` 为例外：PPU 为 `32`，pivot 位于底部中央的实际脚底（Y = 1/26）。`Models/GoblinBillboard.asset` 与其像素尺寸对应，`Materials/FirstRoom/GoblinLit.mat` 使用 URP Lit / Alpha Clipping 提供 3D 受光、透明裁切和深度遮挡。
 - 图集尚未切割。需要独立物件或视角时，使用 Sprite Editor 切割，并按实际内容确认裁切范围与方向顺序。
 - 部分小图带有边缘残片；放入场景前检查显示范围，按物件需要调整 PPU 与 pivot。
 - `References` 中的 JPG 保留白底，作为参考图使用。
