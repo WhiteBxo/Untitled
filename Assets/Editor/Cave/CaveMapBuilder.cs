@@ -17,6 +17,11 @@ namespace Untitled.Editor
 
         public static void Rebuild(CaveMap map)
         {
+            if (map.TryGetComponent<CaveTerrainStyle>(out var terrain))
+            {
+                CaveTerrainBuilder.Rebuild(map, terrain);
+                return;
+            }
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode before rebuilding.");
             Validate(map);
             var floors = CaveMap.ReadCells(map.FloorTilemap);
@@ -129,6 +134,11 @@ namespace Untitled.Editor
 
         public static void EnsureCurrent(CaveMap map)
         {
+            if (map.TryGetComponent<CaveTerrainStyle>(out var terrain))
+            {
+                CaveTerrainBuilder.EnsureCurrent(map, terrain);
+                return;
+            }
             Validate(map);
             string hash = ComputeHash(map, CaveMap.ReadCells(map.FloorTilemap), CaveMap.ReadCells(map.RiverTilemap));
             if (map.GeometryRoot == null || map.GeometryHash != hash ||
