@@ -31,3 +31,11 @@
 - 图集尚未切割。需要独立物件或视角时，使用 Sprite Editor 切割，并按实际内容确认裁切范围与方向顺序。
 - 部分小图带有边缘残片；放入场景前检查显示范围，按物件需要调整 PPU 与 pivot。
 - `References` 中的 JPG 保留白底，作为参考图使用。
+
+
+## 可放置道具
+
+- 预制体位于 `Assets/Prefabs/Props/{Kitchen,Camp,TotemsBones,Lighting}`，共 41 个。
+- 原生网格位于 `Models/Props`，材质位于 `Materials/Props`，按同一类别组织。`_3d` 为立体容器，`_hd2d` 为受光像素面片。
+- 复用现有 30 张像素原图与厨房参考图，PNG 的现有 Sprite 导入设置保持不变。JPG 白底仍保留，HD-2D 材质通过 Shader 裁切使用完整轮廓。
+- Unity 菜单 `Untitled/Props/素材浏览器` 可看原图、预览角度、调大小和放入场景；使用说明与逐项索引见 [可放置道具](../../docs/placeable_props.md)。

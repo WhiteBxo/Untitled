@@ -34,9 +34,9 @@ Untitled/
 │  │  ├─ UI/                          UI系统控制
 │  │  └─ Utils/                       通用工具
 │  ├─ Shaders/                        着色器
-│  └─ Settings/ 
-├─ Packages/                  
-└─ ProjectSettings/           
+│  └─ Settings/
+├─ Packages/
+└─ ProjectSettings/
 ```
 
 ---
@@ -88,3 +88,10 @@ EventCenter.Invoke(GameEventType.Collect);
 - `PlayerEntity`：封装玩家控制。
 
 ---
+
+
+## 可放置道具素材
+
+41 个预制体已按厨房、营地、图腾骨饰、照明整理到 `Assets/Prefabs/Props`，模型与材质位于 `Assets/Art` 对应分类。保留水缸、锅的 3D 版本，并提供对应 HD-2D 版本。
+
+Unity 菜单 **Untitled → Props → 素材浏览器** 可预览、调节大小与放入场景；完整展厅与容器对照场景在 `Assets/Scenes/Props`。详见 [可放置道具说明与清单](docs/placeable_props.md)。

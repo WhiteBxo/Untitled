@@ -1,0 +1,1482 @@
+{
+  "version": 3,
+  "prefabs": [
+    {
+      "id": "Cauldron_A",
+      "label": "铁锅·铭牌",
+      "category": "Kitchen",
+      "kind": "mesh",
+      "prefab": "Assets/Prefabs/Props/Kitchen/cauldron_a_3d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/cauldron_a_3d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/cauldron_a_3d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png"
+      ],
+      "frames": [],
+      "size": [
+        0.9,
+        0.78,
+        0.9
+      ]
+    },
+    {
+      "id": "Cauldron_B",
+      "label": "铁锅·素面",
+      "category": "Kitchen",
+      "kind": "mesh",
+      "prefab": "Assets/Prefabs/Props/Kitchen/cauldron_b_3d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/cauldron_b_3d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/cauldron_b_3d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png"
+      ],
+      "frames": [],
+      "size": [
+        0.9,
+        0.78,
+        0.9
+      ]
+    },
+    {
+      "id": "StoneCistern_Narrow",
+      "label": "石水缸·窄",
+      "category": "Kitchen",
+      "kind": "mesh",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_narrow_3d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_narrow_3d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_narrow_3d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basin.png",
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basins_sheet.png",
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [],
+      "size": [
+        0.8,
+        0.94,
+        0.68
+      ]
+    },
+    {
+      "id": "StoneCistern_Standard",
+      "label": "石水缸·标准",
+      "category": "Kitchen",
+      "kind": "mesh",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_standard_3d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_standard_3d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_standard_3d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basin.png",
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basins_sheet.png",
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [],
+      "size": [
+        1.12,
+        0.94,
+        0.8
+      ]
+    },
+    {
+      "id": "StoneCistern_Wide",
+      "label": "石水缸·宽",
+      "category": "Kitchen",
+      "kind": "mesh",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_wide_3d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_wide_3d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_wide_3d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basin.png",
+        "Assets/Art/Sprites/Props/Kitchen/stone_water_basins_sheet.png",
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [],
+      "size": [
+        1.65,
+        1.04,
+        0.93
+      ]
+    },
+    {
+      "id": "Firewood_Bundle",
+      "label": "柴捆·粗",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/firewood_bundle_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/firewood_bundle_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/firewood_bundle_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.03125,
+          "y": 0.328125,
+          "w": 0.328125,
+          "h": 0.390625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.714,
+        0.85,
+        0.6
+      ]
+    },
+    {
+      "id": "Firewood_Slim",
+      "label": "柴捆·细",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/firewood_slim_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/firewood_slim_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/firewood_slim_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.390625,
+          "y": 0.328125,
+          "w": 0.234375,
+          "h": 0.375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.53125,
+        0.85,
+        0.6
+      ]
+    },
+    {
+      "id": "Firewood_Stack",
+      "label": "柴捆·叠放",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/firewood_stack_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/firewood_stack_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/firewood_stack_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.671875,
+          "y": 0.3125,
+          "w": 0.296875,
+          "h": 0.40625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.6211538461538461,
+        0.85,
+        0.6
+      ]
+    },
+    {
+      "id": "Firewood_Scattered",
+      "label": "散落木柴",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/firewood_scattered_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/firewood_scattered_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/firewood_scattered_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/firewood_pile.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/firewood_pile.png"
+      ],
+      "frames": [
+        {
+          "x": 0.15625,
+          "y": 0.125,
+          "w": 0.6875,
+          "h": 0.65625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.680952380952381,
+        0.65,
+        0.7
+      ]
+    },
+    {
+      "id": "Produce_Pixel",
+      "label": "像素蔬菜堆",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/produce_pixel_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/produce_pixel_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/produce_pixel_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/vegetable_pile.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/vegetable_pile.png"
+      ],
+      "frames": [
+        {
+          "x": 0.03125,
+          "y": 0.125,
+          "w": 0.9375,
+          "h": 0.671875,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.1162790697674418,
+        0.8,
+        0.7
+      ]
+    },
+    {
+      "id": "Produce_Garden",
+      "label": "蔬菜堆·混合",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/produce_garden_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/produce_garden_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/produce_garden_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.3039772727272727,
+          "y": 0.5364583333333334,
+          "w": 0.36079545454545453,
+          "h": 0.3854166666666667,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.3729729729729732,
+        0.8,
+        0.75
+      ]
+    },
+    {
+      "id": "Produce_Roots",
+      "label": "蔬菜堆·根茎",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/produce_roots_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/produce_roots_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/produce_roots_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.027698863636363636,
+          "y": 0.07552083333333333,
+          "w": 0.2947443181818182,
+          "h": 0.3828125,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.129251700680272,
+        0.8,
+        0.75
+      ]
+    },
+    {
+      "id": "Produce_Leaves",
+      "label": "蔬菜堆·叶菜",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/produce_leaves_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/produce_leaves_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/produce_leaves_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.3565340909090909,
+          "y": 0.07291666666666667,
+          "w": 0.2919034090909091,
+          "h": 0.3854166666666667,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.1108108108108108,
+        0.8,
+        0.75
+      ]
+    },
+    {
+      "id": "Produce_Onions",
+      "label": "蔬菜堆·葱蒜",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/produce_onions_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/produce_onions_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/produce_onions_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.6768465909090909,
+          "y": 0.07552083333333333,
+          "w": 0.2997159090909091,
+          "h": 0.3815104166666667,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.1522184300341298,
+        0.8,
+        0.75
+      ]
+    },
+    {
+      "id": "Chopping_Table",
+      "label": "砧板桌·八方向",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/chopping_table_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/chopping_table_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/chopping_table_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/wooden_workbench_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/wooden_workbench_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.02022058823529412,
+          "y": 0.19117647058823528,
+          "w": 0.08639705882352941,
+          "h": 0.6176470588235294,
+          "sx": 0.94,
+          "sy": 0.9130434782608695
+        },
+        {
+          "x": 0.14154411764705882,
+          "y": 0.1323529411764706,
+          "w": 0.09191176470588236,
+          "h": 0.6764705882352942,
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        {
+          "x": 0.28308823529411764,
+          "y": 0.16176470588235295,
+          "w": 0.05514705882352941,
+          "h": 0.6764705882352942,
+          "sx": 0.6,
+          "sy": 1.0
+        },
+        {
+          "x": 0.39338235294117646,
+          "y": 0.14705882352941177,
+          "w": 0.0900735294117647,
+          "h": 0.6764705882352942,
+          "sx": 0.98,
+          "sy": 1.0
+        },
+        {
+          "x": 0.5202205882352942,
+          "y": 0.19117647058823528,
+          "w": 0.08639705882352941,
+          "h": 0.5441176470588235,
+          "sx": 0.94,
+          "sy": 0.8043478260869565
+        },
+        {
+          "x": 0.6433823529411765,
+          "y": 0.14705882352941177,
+          "w": 0.0900735294117647,
+          "h": 0.6764705882352942,
+          "sx": 0.98,
+          "sy": 1.0
+        },
+        {
+          "x": 0.7886029411764706,
+          "y": 0.16176470588235295,
+          "w": 0.05514705882352941,
+          "h": 0.6323529411764706,
+          "sx": 0.6,
+          "sy": 0.9347826086956522
+        },
+        {
+          "x": 0.8933823529411765,
+          "y": 0.1323529411764706,
+          "w": 0.09191176470588236,
+          "h": 0.6764705882352942,
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      ],
+      "size": [
+        0.9782608695652174,
+        0.9,
+        0.7
+      ]
+    },
+    {
+      "id": "Cooking_Stove",
+      "label": "石灶与锅",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/cooking_stove_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/cooking_stove_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/cooking_stove_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/camp_cooking_pot.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/camp_cooking_pot.png"
+      ],
+      "frames": [
+        {
+          "x": 0.125,
+          "y": 0.09375,
+          "w": 0.75,
+          "h": 0.75,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.9,
+        0.9,
+        0.7
+      ]
+    },
+    {
+      "id": "Meat_Rack",
+      "label": "晾肉架",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/meat_rack_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/meat_rack_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/meat_rack_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/meat_drying_rack.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/meat_drying_rack.png"
+      ],
+      "frames": [
+        {
+          "x": 0.09375,
+          "y": 0.125,
+          "w": 0.8125,
+          "h": 0.75,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.8958333333333333,
+        1.75,
+        0.6
+      ]
+    },
+    {
+      "id": "Rune_Banner",
+      "label": "符文旗",
+      "category": "TotemsBones",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/TotemsBones/rune_banner_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/TotemsBones/rune_banner_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/TotemsBones/rune_banner_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/TotemsBones/tribal_banner.png",
+      "references": [
+        "Assets/Art/Sprites/Props/TotemsBones/tribal_banner.png"
+      ],
+      "frames": [
+        {
+          "x": 0.15625,
+          "y": 0.0625,
+          "w": 0.6875,
+          "h": 0.84375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.548148148148148,
+        1.9,
+        0.25
+      ]
+    },
+    {
+      "id": "Beast_Totem",
+      "label": "兽骨图腾",
+      "category": "TotemsBones",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/TotemsBones/beast_totem_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/TotemsBones/beast_totem_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/TotemsBones/beast_totem_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/TotemsBones/horned_skull_ornament.png",
+      "references": [
+        "Assets/Art/Sprites/Props/TotemsBones/horned_skull_ornament.png"
+      ],
+      "frames": [
+        {
+          "x": 0.15625,
+          "y": 0.0625,
+          "w": 0.6875,
+          "h": 0.875,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.5714285714285714,
+        2,
+        0.5
+      ]
+    },
+    {
+      "id": "Hide_Tent",
+      "label": "兽皮帐篷",
+      "category": "Camp",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Camp/hide_tent_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Camp/hide_tent_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Camp/hide_tent_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/hide_tent.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/hide_tent.png"
+      ],
+      "frames": [
+        {
+          "x": 0.1875,
+          "y": 0.125,
+          "w": 0.625,
+          "h": 0.84375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.3703703703703705,
+        1.85,
+        1.6
+      ]
+    },
+    {
+      "id": "Ring_Training_Rack",
+      "label": "吊环练习架",
+      "category": "TotemsBones",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/TotemsBones/ring_training_rack_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/TotemsBones/ring_training_rack_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/TotemsBones/ring_training_rack_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/TotemsBones/ritual_hanging_stand_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/TotemsBones/ritual_hanging_stand_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.0625,
+          "y": 0.0,
+          "w": 0.75,
+          "h": 0.96875,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.4709677419354836,
+        1.9,
+        0.6
+      ]
+    },
+    {
+      "id": "Straw_Bed",
+      "label": "草铺·八方向",
+      "category": "Camp",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Camp/straw_bed_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Camp/straw_bed_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Camp/straw_bed_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/fur_bedroll_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/fur_bedroll_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.01838235294117647,
+          "y": 0.17647058823529413,
+          "w": 0.09191176470588236,
+          "h": 0.6176470588235294,
+          "sx": 0.8928571428571429,
+          "sy": 0.9545454545454546
+        },
+        {
+          "x": 0.13602941176470587,
+          "y": 0.14705882352941177,
+          "w": 0.10294117647058823,
+          "h": 0.6470588235294118,
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        {
+          "x": 0.2610294117647059,
+          "y": 0.23529411764705882,
+          "w": 0.10294117647058823,
+          "h": 0.5,
+          "sx": 1.0,
+          "sy": 0.7727272727272727
+        },
+        {
+          "x": 0.3860294117647059,
+          "y": 0.14705882352941177,
+          "w": 0.10294117647058823,
+          "h": 0.6470588235294118,
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        {
+          "x": 0.5183823529411765,
+          "y": 0.17647058823529413,
+          "w": 0.08823529411764706,
+          "h": 0.6176470588235294,
+          "sx": 0.8571428571428571,
+          "sy": 0.9545454545454546
+        },
+        {
+          "x": 0.6360294117647058,
+          "y": 0.17647058823529413,
+          "w": 0.10294117647058823,
+          "h": 0.5882352941176471,
+          "sx": 1.0,
+          "sy": 0.9090909090909091
+        },
+        {
+          "x": 0.7647058823529411,
+          "y": 0.23529411764705882,
+          "w": 0.10294117647058823,
+          "h": 0.5,
+          "sx": 1.0,
+          "sy": 0.7727272727272727
+        },
+        {
+          "x": 0.8897058823529411,
+          "y": 0.14705882352941177,
+          "w": 0.10294117647058823,
+          "h": 0.6470588235294118,
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      ],
+      "size": [
+        0.9545454545454546,
+        0.75,
+        1.7
+      ]
+    },
+    {
+      "id": "Spike_Barrier",
+      "label": "木桩路障",
+      "category": "Camp",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Camp/spike_barrier_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Camp/spike_barrier_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Camp/spike_barrier_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_01.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_01.png"
+      ],
+      "frames": [
+        {
+          "x": 0.125,
+          "y": 0.09375,
+          "w": 0.75,
+          "h": 0.8125,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.2000000000000002,
+        1.3,
+        0.7
+      ]
+    },
+    {
+      "id": "Wooden_Bed",
+      "label": "木床·八方向",
+      "category": "Camp",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Camp/wooden_bed_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Camp/wooden_bed_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Camp/wooden_bed_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/straw_bed_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/straw_bed_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.025735294117647058,
+          "y": 0.08823529411764706,
+          "w": 0.07720588235294118,
+          "h": 0.8235294117647058,
+          "sx": 0.6363636363636364,
+          "sy": 0.9655172413793104
+        },
+        {
+          "x": 0.1323529411764706,
+          "y": 0.08823529411764706,
+          "w": 0.11397058823529412,
+          "h": 0.8529411764705882,
+          "sx": 0.9393939393939394,
+          "sy": 1.0
+        },
+        {
+          "x": 0.25735294117647056,
+          "y": 0.17647058823529413,
+          "w": 0.11397058823529412,
+          "h": 0.6176470588235294,
+          "sx": 0.9393939393939394,
+          "sy": 0.7241379310344828
+        },
+        {
+          "x": 0.3786764705882353,
+          "y": 0.058823529411764705,
+          "w": 0.1213235294117647,
+          "h": 0.8235294117647058,
+          "sx": 1.0,
+          "sy": 0.9655172413793104
+        },
+        {
+          "x": 0.5257352941176471,
+          "y": 0.058823529411764705,
+          "w": 0.07720588235294118,
+          "h": 0.8235294117647058,
+          "sx": 0.6363636363636364,
+          "sy": 0.9655172413793104
+        },
+        {
+          "x": 0.6286764705882353,
+          "y": 0.058823529411764705,
+          "w": 0.1213235294117647,
+          "h": 0.8235294117647058,
+          "sx": 1.0,
+          "sy": 0.9655172413793104
+        },
+        {
+          "x": 0.7610294117647058,
+          "y": 0.17647058823529413,
+          "w": 0.11029411764705882,
+          "h": 0.6176470588235294,
+          "sx": 0.9090909090909091,
+          "sy": 0.7241379310344828
+        },
+        {
+          "x": 0.8823529411764706,
+          "y": 0.08823529411764706,
+          "w": 0.11397058823529412,
+          "h": 0.8529411764705882,
+          "sx": 0.9393939393939394,
+          "sy": 1.0
+        }
+      ],
+      "size": [
+        1.2517241379310347,
+        1.1,
+        1.8
+      ]
+    },
+    {
+      "id": "Training_Dummy",
+      "label": "草人·八方向",
+      "category": "Camp",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Camp/training_dummy_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Camp/training_dummy_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Camp/training_dummy_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/training_dummy_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/training_dummy_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.007352941176470588,
+          "y": 0.029411764705882353,
+          "w": 0.11029411764705882,
+          "h": 0.9117647058823529,
+          "sx": 1.0,
+          "sy": 0.96875
+        },
+        {
+          "x": 0.14338235294117646,
+          "y": 0.029411764705882353,
+          "w": 0.08823529411764706,
+          "h": 0.9117647058823529,
+          "sx": 0.8,
+          "sy": 0.96875
+        },
+        {
+          "x": 0.2757352941176471,
+          "y": 0.0,
+          "w": 0.07352941176470588,
+          "h": 0.9411764705882353,
+          "sx": 0.6666666666666666,
+          "sy": 1.0
+        },
+        {
+          "x": 0.39338235294117646,
+          "y": 0.029411764705882353,
+          "w": 0.08823529411764706,
+          "h": 0.9117647058823529,
+          "sx": 0.8,
+          "sy": 0.96875
+        },
+        {
+          "x": 0.5110294117647058,
+          "y": 0.0,
+          "w": 0.10661764705882353,
+          "h": 0.9411764705882353,
+          "sx": 0.9666666666666667,
+          "sy": 1.0
+        },
+        {
+          "x": 0.6433823529411765,
+          "y": 0.029411764705882353,
+          "w": 0.08823529411764706,
+          "h": 0.9117647058823529,
+          "sx": 0.8,
+          "sy": 0.96875
+        },
+        {
+          "x": 0.7794117647058824,
+          "y": 0.0,
+          "w": 0.07352941176470588,
+          "h": 0.9411764705882353,
+          "sx": 0.6666666666666666,
+          "sy": 1.0
+        },
+        {
+          "x": 0.8933823529411765,
+          "y": 0.058823529411764705,
+          "w": 0.08823529411764706,
+          "h": 0.8823529411764706,
+          "sx": 0.8,
+          "sy": 0.9375
+        }
+      ],
+      "size": [
+        1.6875,
+        1.8,
+        0.6
+      ]
+    },
+    {
+      "id": "Campfire",
+      "label": "篝火",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/campfire_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/campfire_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/campfire_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_02.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_02.png"
+      ],
+      "frames": [
+        {
+          "x": 0.125,
+          "y": 0.15625,
+          "w": 0.78125,
+          "h": 0.65625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.3095238095238098,
+        1.1,
+        0.8
+      ]
+    },
+    {
+      "id": "Bone_Pile",
+      "label": "骨堆",
+      "category": "TotemsBones",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/TotemsBones/bone_pile_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/TotemsBones/bone_pile_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/TotemsBones/bone_pile_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/TotemsBones/skull_ritual_ornament.png",
+      "references": [
+        "Assets/Art/Sprites/Props/TotemsBones/skull_ritual_ornament.png"
+      ],
+      "frames": [
+        {
+          "x": 0.15625,
+          "y": 0.09375,
+          "w": 0.6875,
+          "h": 0.75,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.6416666666666666,
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "Rune_Shield",
+      "label": "符文盾",
+      "category": "TotemsBones",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/TotemsBones/rune_shield_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/TotemsBones/rune_shield_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/TotemsBones/rune_shield_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/TotemsBones/tribal_shield.png",
+      "references": [
+        "Assets/Art/Sprites/Props/TotemsBones/tribal_shield.png"
+      ],
+      "frames": [
+        {
+          "x": 0.25,
+          "y": 0.09375,
+          "w": 0.5,
+          "h": 0.78125,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.768,
+        1.2,
+        0.3
+      ]
+    },
+    {
+      "id": "Wood_Tripod_Unlit",
+      "label": "木三脚架·未点燃",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/wood_tripod_unlit_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/wood_tripod_unlit_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/wood_tripod_unlit_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_torch_unlit_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_torch_unlit_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.25,
+          "y": 0.0,
+          "w": 0.5,
+          "h": 0.96875,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.9290322580645162,
+        1.8,
+        0.6
+      ]
+    },
+    {
+      "id": "Wood_Tripod_Lit",
+      "label": "木三脚火架",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/wood_tripod_lit_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/wood_tripod_lit_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/wood_tripod_lit_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_torch_wood_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_torch_wood_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.28125,
+          "y": 0.0,
+          "w": 0.4375,
+          "h": 0.9375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.9333333333333333,
+        2,
+        0.6
+      ]
+    },
+    {
+      "id": "Iron_Cage_Fire",
+      "label": "铁笼火架",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/iron_cage_fire_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/iron_cage_fire_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/iron_cage_fire_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_torch_iron_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_torch_iron_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.25,
+          "y": 0.0,
+          "w": 0.5,
+          "h": 0.9375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.0666666666666667,
+        2,
+        0.6
+      ]
+    },
+    {
+      "id": "Iron_Bowl_Fire",
+      "label": "铁盆火架",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/iron_bowl_fire_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/iron_bowl_fire_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/iron_bowl_fire_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_brazier_iron_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_brazier_iron_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.21875,
+          "y": 0.0,
+          "w": 0.46875,
+          "h": 0.90625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.9310344827586207,
+        1.8,
+        0.6
+      ]
+    },
+    {
+      "id": "Timber_Brazier",
+      "label": "木座火盆",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/timber_brazier_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/timber_brazier_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/timber_brazier_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_brazier_wood_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_brazier_wood_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.28125,
+          "y": 0.0,
+          "w": 0.40625,
+          "h": 0.75,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.7312500000000001,
+        1.35,
+        0.6
+      ]
+    },
+    {
+      "id": "Bone_Fire_Stand",
+      "label": "骨制火架",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/bone_fire_stand_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/bone_fire_stand_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/bone_fire_stand_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/standing_torch_bone_crop.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/standing_torch_bone_crop.png"
+      ],
+      "frames": [
+        {
+          "x": 0.25,
+          "y": 0.0,
+          "w": 0.5,
+          "h": 0.9375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        1.0666666666666667,
+        2,
+        0.6
+      ]
+    },
+    {
+      "id": "Wall_Torch_Wood",
+      "label": "木座壁炬·八方向",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/wall_torch_wood_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/wall_torch_wood_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/wall_torch_wood_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/wall_torch_wood_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/wall_torch_wood_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.04044117647058824,
+          "y": 0.11764705882352941,
+          "w": 0.04779411764705882,
+          "h": 0.7647058823529411,
+          "sx": 0.7222222222222222,
+          "sy": 0.9629629629629629
+        },
+        {
+          "x": 0.15073529411764705,
+          "y": 0.11764705882352941,
+          "w": 0.0661764705882353,
+          "h": 0.7352941176470589,
+          "sx": 1.0,
+          "sy": 0.9259259259259259
+        },
+        {
+          "x": 0.27941176470588236,
+          "y": 0.14705882352941177,
+          "w": 0.0661764705882353,
+          "h": 0.7647058823529411,
+          "sx": 1.0,
+          "sy": 0.9629629629629629
+        },
+        {
+          "x": 0.40808823529411764,
+          "y": 0.14705882352941177,
+          "w": 0.0625,
+          "h": 0.7941176470588235,
+          "sx": 0.9444444444444444,
+          "sy": 1.0
+        },
+        {
+          "x": 0.5404411764705882,
+          "y": 0.14705882352941177,
+          "w": 0.04411764705882353,
+          "h": 0.7941176470588235,
+          "sx": 0.6666666666666666,
+          "sy": 1.0
+        },
+        {
+          "x": 0.6580882352941176,
+          "y": 0.14705882352941177,
+          "w": 0.0625,
+          "h": 0.7941176470588235,
+          "sx": 0.9444444444444444,
+          "sy": 1.0
+        },
+        {
+          "x": 0.7794117647058824,
+          "y": 0.14705882352941177,
+          "w": 0.0661764705882353,
+          "h": 0.7647058823529411,
+          "sx": 1.0,
+          "sy": 0.9629629629629629
+        },
+        {
+          "x": 0.9117647058823529,
+          "y": 0.11764705882352941,
+          "w": 0.0661764705882353,
+          "h": 0.7352941176470589,
+          "sx": 1.0,
+          "sy": 0.9259259259259259
+        }
+      ],
+      "size": [
+        0.9,
+        1.35,
+        0.4
+      ]
+    },
+    {
+      "id": "Wall_Torch_Stone",
+      "label": "石座壁炬·八方向",
+      "category": "Lighting",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Lighting/wall_torch_stone_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Lighting/wall_torch_stone_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Lighting/wall_torch_stone_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Lighting/wall_torch_stone_8view_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Lighting/wall_torch_stone_8view_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.03125,
+          "y": 0.0625,
+          "w": 0.0625,
+          "h": 0.875,
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        {
+          "x": 0.15234375,
+          "y": 0.09375,
+          "w": 0.0625,
+          "h": 0.84375,
+          "sx": 1.0,
+          "sy": 0.9642857142857143
+        },
+        {
+          "x": 0.27734375,
+          "y": 0.09375,
+          "w": 0.0625,
+          "h": 0.84375,
+          "sx": 1.0,
+          "sy": 0.9642857142857143
+        },
+        {
+          "x": 0.40234375,
+          "y": 0.09375,
+          "w": 0.05859375,
+          "h": 0.84375,
+          "sx": 0.9375,
+          "sy": 0.9642857142857143
+        },
+        {
+          "x": 0.53125,
+          "y": 0.0625,
+          "w": 0.05859375,
+          "h": 0.875,
+          "sx": 0.9375,
+          "sy": 1.0
+        },
+        {
+          "x": 0.66015625,
+          "y": 0.09375,
+          "w": 0.0625,
+          "h": 0.875,
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        {
+          "x": 0.78515625,
+          "y": 0.09375,
+          "w": 0.0625,
+          "h": 0.8125,
+          "sx": 1.0,
+          "sy": 0.9285714285714286
+        },
+        {
+          "x": 0.91015625,
+          "y": 0.09375,
+          "w": 0.0625,
+          "h": 0.8125,
+          "sx": 1.0,
+          "sy": 0.9285714285714286
+        }
+      ],
+      "size": [
+        0.7714285714285715,
+        1.35,
+        0.4
+      ]
+    },
+    {
+      "id": "Cauldron_A_HD2D",
+      "label": "铁锅·铭牌 / HD-2D",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/cauldron_a_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/cauldron_a_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/cauldron_a_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.109375,
+          "y": 0.296875,
+          "w": 0.40625,
+          "h": 0.4375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.7242857142857143,
+        0.78,
+        0.45
+      ]
+    },
+    {
+      "id": "Cauldron_B_HD2D",
+      "label": "铁锅·素面 / HD-2D",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/cauldron_b_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/cauldron_b_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/cauldron_b_hd2d.mat",
+      "texture": "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png",
+      "references": [
+        "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png"
+      ],
+      "frames": [
+        {
+          "x": 0.578125,
+          "y": 0.296875,
+          "w": 0.421875,
+          "h": 0.4375,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.7521428571428572,
+        0.78,
+        0.45
+      ]
+    },
+    {
+      "id": "StoneCistern_Narrow_HD2D",
+      "label": "石水缸·窄 / HD-2D",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_narrow_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_narrow_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_narrow_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.43323863636363635,
+          "y": 0.13671875,
+          "w": 0.2421875,
+          "h": 0.7877604166666666,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.5298181818181817,
+        0.94,
+        0.45
+      ]
+    },
+    {
+      "id": "StoneCistern_Standard_HD2D",
+      "label": "石水缸·标准 / HD-2D",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_standard_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_standard_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_standard_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.7159090909090909,
+          "y": 0.14192708333333334,
+          "w": 0.2521306818181818,
+          "h": 0.7825520833333334,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.5552412645590682,
+        0.94,
+        0.45
+      ]
+    },
+    {
+      "id": "StoneCistern_Wide_HD2D",
+      "label": "石水缸·宽 / HD-2D",
+      "category": "Kitchen",
+      "kind": "pixel",
+      "prefab": "Assets/Prefabs/Props/Kitchen/stone_cistern_wide_hd2d.prefab",
+      "mesh": "Assets/Art/Models/Props/Kitchen/stone_cistern_wide_hd2d.asset",
+      "material": "Assets/Art/Materials/Props/Kitchen/stone_cistern_wide_hd2d.mat",
+      "texture": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+      "references": [
+        "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
+      ],
+      "frames": [
+        {
+          "x": 0.02911931818181818,
+          "y": 0.13541666666666666,
+          "w": 0.3678977272727273,
+          "h": 0.7890625,
+          "sx": 1,
+          "sy": 1
+        }
+      ],
+      "size": [
+        0.8889768976897691,
+        1.04,
+        0.45
+      ]
+    }
+  ],
+  "reusedTextures": {
+    "Assets/HD2DProps/References/Source_01.png": "Assets/Art/Sprites/Props/Kitchen/cauldron_variants_sheet.png",
+    "Assets/HD2DProps/References/Source_02.png": "Assets/Art/Sprites/Props/Kitchen/firewood_bundles_sheet.png",
+    "Assets/HD2DProps/References/Source_03.png": "Assets/Art/Sprites/Props/Kitchen/firewood_pile.png",
+    "Assets/HD2DProps/References/Source_04.png": "Assets/Art/Sprites/Props/Kitchen/vegetable_pile.png",
+    "Assets/HD2DProps/References/Source_05.png": "Assets/Art/Sprites/Props/Kitchen/stone_water_basin.png",
+    "Assets/HD2DProps/References/Source_06.png": "Assets/Art/Sprites/Props/Kitchen/stone_water_basins_sheet.png",
+    "Assets/HD2DProps/References/Source_07.jpg": "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg",
+    "Assets/HD2DProps/References/Source_08.jpg": "Assets/Art/References/Kitchen/vegetable_piles_reference.jpg",
+    "Assets/HD2DProps/References/Source_09.png": "Assets/Art/Sprites/Props/Kitchen/wooden_workbench_8view_sheet.png",
+    "Assets/HD2DProps/References/Source_10.png": "Assets/Art/Sprites/Props/Kitchen/camp_cooking_pot.png",
+    "Assets/HD2DProps/References/Source_11.png": "Assets/Art/Sprites/Props/Kitchen/meat_drying_rack.png",
+    "Assets/HD2DProps/References/Source_12.png": "Assets/Art/Sprites/Props/TotemsBones/tribal_banner.png",
+    "Assets/HD2DProps/References/Source_13.png": "Assets/Art/Sprites/Props/TotemsBones/horned_skull_ornament.png",
+    "Assets/HD2DProps/References/Source_14.png": "Assets/Art/Sprites/Props/Camp/hide_tent.png",
+    "Assets/HD2DProps/References/Source_15.png": "Assets/Art/Sprites/Props/TotemsBones/ritual_hanging_stand_crop.png",
+    "Assets/HD2DProps/References/Source_16.png": "Assets/Art/Sprites/Props/Camp/fur_bedroll_8view_sheet.png",
+    "Assets/HD2DProps/References/Source_17.png": "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_01.png",
+    "Assets/HD2DProps/References/Source_18.png": "Assets/Art/Sprites/Props/Camp/straw_bed_8view_sheet.png",
+    "Assets/HD2DProps/References/Source_19.png": "Assets/Art/Sprites/Props/Camp/training_dummy_8view_sheet.png",
+    "Assets/HD2DProps/References/Source_20.png": "Assets/Art/Sprites/Props/Camp/wooden_spikes_cluster_02.png",
+    "Assets/HD2DProps/References/Source_21.png": "Assets/Art/Sprites/Props/TotemsBones/skull_ritual_ornament.png",
+    "Assets/HD2DProps/References/Source_22.png": "Assets/Art/Sprites/Props/TotemsBones/tribal_shield.png",
+    "Assets/HD2DProps/References/Source_23.png": "Assets/Art/Sprites/Props/Lighting/standing_torch_unlit_crop.png",
+    "Assets/HD2DProps/References/Source_24.png": "Assets/Art/Sprites/Props/Lighting/standing_torch_wood_crop.png",
+    "Assets/HD2DProps/References/Source_25.png": "Assets/Art/Sprites/Props/Lighting/standing_torch_iron_crop.png",
+    "Assets/HD2DProps/References/Source_26.png": "Assets/Art/Sprites/Props/Lighting/standing_brazier_iron_crop.png",
+    "Assets/HD2DProps/References/Source_27.png": "Assets/Art/Sprites/Props/Lighting/standing_brazier_wood_crop.png",
+    "Assets/HD2DProps/References/Source_28.png": "Assets/Art/Sprites/Props/Lighting/standing_torch_bone_crop.png",
+    "Assets/HD2DProps/References/Source_29.png": "Assets/Art/Sprites/Props/Lighting/wall_torch_wood_8view_sheet.png",
+    "Assets/HD2DProps/References/Source_30.png": "Assets/Art/Sprites/Props/Lighting/wall_torch_stone_8view_sheet.png"
+  }
+}
