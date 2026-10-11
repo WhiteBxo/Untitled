@@ -30,6 +30,7 @@ namespace Untitled.Editor
                 }
 
                 EditorGUILayout.HelpBox("Paint Floor / River using CavePalette (cell Z = 0). River needs floor beneath it and remains walkable. Save synchronizes 3D meshes and colliders.", MessageType.Info);
+                EditorGUILayout.HelpBox("Foreground Wall Height lowers the camera-facing boundary for the fixed -Z view. Wall Height still controls collisions and the rear walls. Set both heights equal for full walls.", MessageType.Info);
                 try { CaveMapBuilder.Validate(map); }
                 catch (InvalidOperationException error) { EditorGUILayout.HelpBox(error.Message, MessageType.Error); }
                 var floorRenderer = map.FloorTilemap.GetComponent<TilemapRenderer>();
@@ -46,6 +47,18 @@ namespace Untitled.Editor
                 if (GUILayout.Button("Select Spawn Point")) Selection.activeGameObject = map.SpawnPoint.gameObject;
                 if (GUILayout.Button("Rebuild 3D Map From Scene Tilemaps")) CaveMapBuilder.Rebuild(map);
             }
+        }
+
+        [MenuItem("Untitled/Cave/Rebuild Scene Geometry")]
+        public static void RebuildSceneGeometry()
+        {
+            var scene = EditorSceneManager.GetActiveScene();
+            var maps = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CaveMap>(true)).ToArray();
+            if (maps.Length != 1) throw new InvalidOperationException("Open a scene with one CaveMap first.");
+            CaveMapBuilder.Rebuild(maps[0]);
+            EditorSceneManager.SaveScene(scene);
+            Debug.Log("Cave cutaway saved: foreground " + maps[0].ForegroundWallHeight +
+                ", full collision height " + maps[0].WallHeight + ".", maps[0]);
         }
 
         [MenuItem("Untitled/Cave/Enable Scene Tilemap Editing %&t")]

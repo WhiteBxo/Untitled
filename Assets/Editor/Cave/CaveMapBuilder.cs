@@ -76,6 +76,7 @@ namespace Untitled.Editor
                 }
             }
             var walls = new HashSet<Vector2Int>();
+            var separateCollisionChunks = new HashSet<Vector2Int>(waterChunks.Keys);
             foreach (Vector2Int cell in floors)
                 for (int y = -1; y <= 1; y++) for (int x = -1; x <= 1; x++)
                 {
@@ -85,9 +86,14 @@ namespace Untitled.Editor
             foreach (Vector2Int cell in walls.OrderBy(c => c.y).ThenBy(c => c.x))
             {
                 Vector3 center = map.transform.InverseTransformPoint(map.CellToWorld(cell));
-                GetChunk(cell).Box(center + Vector3.up * map.WallHeight * 0.5f,
-                    new Vector3(map.CellSize, map.WallHeight, map.CellSize), 1);
+                // Grid -Y maps to world +Z, behind the wall from the fixed -Z camera.
+                // Cut only the foreground boundary; rear and side walls retain their height.
+                float displayHeight = floors.Contains(cell + Vector2Int.down)
+                    ? map.ForegroundWallHeight : map.WallHeight;
+                GetChunk(cell).Box(center + Vector3.up * displayHeight * 0.5f,
+                    new Vector3(map.CellSize, displayHeight, map.CellSize), 1);
                 Vector2Int key = Key(cell);
+                if (displayHeight < map.WallHeight) separateCollisionChunks.Add(key);
                 if (!collisionChunks.TryGetValue(key, out var collision))
                     collisionChunks.Add(key, collision = new Chunk());
                 collision.Box(center + Vector3.up * map.WallHeight * 0.5f,
@@ -104,8 +110,8 @@ namespace Untitled.Editor
                 go.transform.SetParent(root.transform, false);
                 go.GetComponent<MeshFilter>().sharedMesh = saved;
                 go.GetComponent<MeshRenderer>().sharedMaterials = new[] { map.GroundMaterial, map.WallMaterial, map.RiverMaterial };
-                // Keep the original flat walk surface, independently of the sunken water visual.
-                go.GetComponent<MeshCollider>().sharedMesh = waterChunks.ContainsKey(pair.Key)
+                // Collisions preserve full wall height and the original flat walk surface.
+                go.GetComponent<MeshCollider>().sharedMesh = separateCollisionChunks.Contains(pair.Key)
                     ? SaveMesh(collisionChunks[pair.Key].Build(name + "_Collision"), path.Replace(".asset", "_Collision.asset"))
                     : saved;
                 if (waterChunks.TryGetValue(pair.Key, out var water))
@@ -166,9 +172,10 @@ namespace Untitled.Editor
 
         private static string ComputeHash(CaveMap map, HashSet<Vector2Int> floors, HashSet<Vector2Int> rivers)
         {
-            var data = new StringBuilder("scene-tilemap-v1|");
+            var data = new StringBuilder("scene-tilemap-v2-cutaway|");
             data.Append(map.CellSize.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
             data.Append(map.WallHeight.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
+            data.Append(map.ForegroundWallHeight.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
             Vector3 origin = map.LayoutGrid.transform.localPosition;
             foreach (float value in new[] { origin.x, origin.y, origin.z })
                 data.Append(value.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
