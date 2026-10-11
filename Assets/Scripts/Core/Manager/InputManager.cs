@@ -19,12 +19,13 @@ namespace Untitled
             EnableInput();
             inputActions.Player.Move.performed += OnPlayerMove;
             inputActions.Player.Move.canceled += OnPlayerMoveCanceled;
+            inputActions.Player.ESC.performed += OnEscPerformed;
         }
 
         public void EnableInput()
         {
             inputActions.Enable();
-        }   
+        }
 
         public void DisableInput()
         {
@@ -39,6 +40,11 @@ namespace Untitled
         private void OnPlayerMoveCanceled(InputAction.CallbackContext ctx)
         {
             MoveInput = Vector2.zero;
+        }
+
+        private void OnEscPerformed(InputAction.CallbackContext ctx)
+        {
+            EventCenter.Invoke(GameEventType.ToggleESC);
         }
     }
 }
