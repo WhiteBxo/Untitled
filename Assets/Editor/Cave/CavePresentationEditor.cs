@@ -22,6 +22,7 @@ namespace Untitled.Editor
             if (shader == null || ShaderUtil.ShaderHasError(shader) || !shader.isSupported)
                 throw new InvalidOperationException("Water shader is unavailable: " + (shader == null ? "missing asset" : string.Join("; ", ShaderUtil.GetShaderMessages(shader).Select(message => message.message))));
             var map = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CaveMap>()).Single();
+            if (!map.HasEditableLayout) throw new InvalidOperationException("Enable scene Tilemap editing first.");
             var follow = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CameraController>()).Single();
             Camera camera = follow.GetComponent<Camera>();
             if (follow.Target == null) throw new InvalidOperationException("Assign the camera target first.");
@@ -62,8 +63,8 @@ namespace Untitled.Editor
             water.SetColor("_DeepColor", new Color(0.025f, 0.13f, 0.17f));
             water.SetColor("_ShallowColor", new Color(0.09f, 0.31f, 0.34f));
             water.SetColor("_FoamColor", new Color(0.32f, 0.57f, 0.55f));
-            water.SetFloat("_PixelsPerUnit", 32f / map.Layout.CellSize);
-            water.SetFloat("_CellSize", map.Layout.CellSize);
+            water.SetFloat("_PixelsPerUnit", 32f / map.CellSize);
+            water.SetFloat("_CellSize", map.CellSize);
             water.SetFloat("_FlowSpeed", 0.65f);
             water.SetFloat("_Smoothness", 0.86f);
             water.renderQueue = -1;

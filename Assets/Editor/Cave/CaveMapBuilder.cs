@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -17,14 +18,10 @@ namespace Untitled.Editor
         public static void Rebuild(CaveMap map)
         {
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode before rebuilding.");
-            var layout = map.Layout;
-            if (layout == null || layout.CellSize <= 0 || layout.SourcePixelsPerCell <= 0 ||
-                map.GroundMaterial == null || map.WallMaterial == null || map.RiverMaterial == null)
-                throw new InvalidOperationException("Assign a valid layout and three materials.");
-            var floors = new HashSet<Vector2Int>(layout.FloorCells);
-            var rivers = new HashSet<Vector2Int>(layout.RiverCells);
-            if (floors.Count == 0 || !floors.Contains(layout.SpawnCell) || !rivers.IsSubsetOf(floors))
-                throw new InvalidOperationException("Spawn and rivers must be on floor cells.");
+            Validate(map);
+            var floors = CaveMap.ReadCells(map.FloorTilemap);
+            var rivers = CaveMap.ReadCells(map.RiverTilemap);
+            string hash = ComputeHash(map, floors, rivers);
             Directory.CreateDirectory(MeshFolder);
             AssetDatabase.Refresh();
             Undo.IncrementCurrentGroup();
@@ -36,6 +33,14 @@ namespace Untitled.Editor
             root.transform.SetParent(map.transform, false);
             var serialized = new SerializedObject(map);
             serialized.FindProperty("geometryRoot").objectReferenceValue = root.transform;
+            string sceneGuid = AssetDatabase.AssetPathToGUID(map.gameObject.scene.path);
+            if (string.IsNullOrEmpty(map.GeometryAssetPrefix) || map.GeometrySceneGuid != sceneGuid)
+            {
+                // A copied scene gets its own generated meshes instead of modifying the source scene.
+                string prefix = sceneGuid + "_" + GlobalObjectId.GetGlobalObjectIdSlow(map).targetObjectId;
+                serialized.FindProperty("geometryAssetPrefix").stringValue = prefix;
+                serialized.FindProperty("geometrySceneGuid").stringValue = sceneGuid;
+            }
             serialized.ApplyModifiedProperties();
 
             var chunks = new Dictionary<Vector2Int, Chunk>();
@@ -50,8 +55,8 @@ namespace Untitled.Editor
             }
             foreach (Vector2Int cell in floors.OrderBy(c => c.y).ThenBy(c => c.x))
             {
-                Vector3 center = CaveCoordinates.CellCenter(cell, layout);
-                Vector3 size = new(layout.CellSize, 0.3f, layout.CellSize);
+                Vector3 center = map.transform.InverseTransformPoint(map.CellToWorld(cell));
+                Vector3 size = new(map.CellSize, 0.3f, map.CellSize);
                 Vector2Int key = Key(cell);
                 if (!collisionChunks.TryGetValue(key, out var collision))
                     collisionChunks.Add(key, collision = new Chunk());
@@ -67,7 +72,7 @@ namespace Untitled.Editor
                         rivers.Contains(cell + Vector2Int.right) ? 0 : 1,
                         rivers.Contains(cell + Vector2Int.up) ? 0 : 1,
                         rivers.Contains(cell + Vector2Int.down) ? 0 : 1);
-                    water.Top(center + Vector3.down * 0.055f, layout.CellSize, 0, banks);
+                    water.Top(center + Vector3.down * 0.055f, map.CellSize, 0, banks);
                 }
             }
             var walls = new HashSet<Vector2Int>();
@@ -79,16 +84,16 @@ namespace Untitled.Editor
                 }
             foreach (Vector2Int cell in walls.OrderBy(c => c.y).ThenBy(c => c.x))
             {
-                Vector3 center = CaveCoordinates.CellCenter(cell, layout);
+                Vector3 center = map.transform.InverseTransformPoint(map.CellToWorld(cell));
                 GetChunk(cell).Box(center + Vector3.up * map.WallHeight * 0.5f,
-                    new Vector3(layout.CellSize, map.WallHeight, layout.CellSize), 1);
+                    new Vector3(map.CellSize, map.WallHeight, map.CellSize), 1);
                 Vector2Int key = Key(cell);
                 if (!collisionChunks.TryGetValue(key, out var collision))
                     collisionChunks.Add(key, collision = new Chunk());
                 collision.Box(center + Vector3.up * map.WallHeight * 0.5f,
-                    new Vector3(layout.CellSize, map.WallHeight, layout.CellSize), 1);
+                    new Vector3(map.CellSize, map.WallHeight, map.CellSize), 1);
             }
-            string assetPrefix = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(layout));
+            string assetPrefix = map.GeometryAssetPrefix;
             foreach (var pair in chunks.OrderBy(c => c.Key.y).ThenBy(c => c.Key.x))
             {
                 string name = "Chunk_" + pair.Key.x + "_" + pair.Key.y;
@@ -114,15 +119,74 @@ namespace Untitled.Editor
                     renderer.shadowCastingMode = ShadowCastingMode.Off;
                 }
             }
+            serialized.Update();
+            serialized.FindProperty("geometryHash").stringValue = hash;
+            serialized.ApplyModifiedProperties();
             EditorSceneManager.MarkSceneDirty(map.gameObject.scene);
             AssetDatabase.SaveAssets();
             Undo.CollapseUndoOperations(undoGroup);
         }
 
+        public static void EnsureCurrent(CaveMap map)
+        {
+            Validate(map);
+            string hash = ComputeHash(map, CaveMap.ReadCells(map.FloorTilemap), CaveMap.ReadCells(map.RiverTilemap));
+            if (map.GeometryRoot == null || map.GeometryHash != hash ||
+                map.GeometrySceneGuid != AssetDatabase.AssetPathToGUID(map.gameObject.scene.path)) Rebuild(map);
+        }
+
+        public static void Validate(CaveMap map)
+        {
+            if (!map.HasEditableLayout || map.GroundMaterial == null || map.WallMaterial == null || map.RiverMaterial == null)
+                throw new InvalidOperationException("Assign the scene Grid, two Tilemaps, spawn point and materials.");
+            Grid grid = map.LayoutGrid;
+            if (string.IsNullOrEmpty(map.gameObject.scene.path))
+                throw new InvalidOperationException("Save the scene before generating meshes.");
+            if (grid.transform.parent != map.transform || grid.cellLayout != GridLayout.CellLayout.Rectangle ||
+                grid.cellSwizzle != GridLayout.CellSwizzle.XYZ || grid.cellGap != Vector3.zero ||
+                grid.cellSize.x <= 0f || !Mathf.Approximately(grid.cellSize.x, grid.cellSize.y) ||
+                !Mathf.Approximately(grid.cellSize.z, 0f) || grid.transform.localScale != Vector3.one ||
+                Quaternion.Angle(grid.transform.localRotation, Quaternion.Euler(-90f, 0f, 0f)) > 0.01f)
+                throw new InvalidOperationException("Use a square XY Grid rotated -90 degrees around X, with no gap or scale.");
+            foreach (var tilemap in new[] { map.FloorTilemap, map.RiverTilemap })
+            {
+                if (tilemap.layoutGrid != grid || tilemap.transform.localPosition.x != 0f ||
+                    tilemap.transform.localPosition.y != 0f || tilemap.transform.localRotation != Quaternion.identity ||
+                    tilemap.transform.localScale != Vector3.one)
+                    throw new InvalidOperationException("Both Tilemaps must align with the layout Grid.");
+                foreach (Vector3Int cell in tilemap.cellBounds.allPositionsWithin)
+                    if (cell.z != 0 && tilemap.HasTile(cell))
+                        throw new InvalidOperationException("Paint tiles on cell Z = 0 only.");
+            }
+            var floors = CaveMap.ReadCells(map.FloorTilemap);
+            var rivers = CaveMap.ReadCells(map.RiverTilemap);
+            if (floors.Count == 0 || !map.IsWalkable(map.SpawnPosition) || !rivers.IsSubsetOf(floors))
+                throw new InvalidOperationException("Floor cannot be empty; spawn and every river cell must be on floor.");
+        }
+
+        private static string ComputeHash(CaveMap map, HashSet<Vector2Int> floors, HashSet<Vector2Int> rivers)
+        {
+            var data = new StringBuilder("scene-tilemap-v1|");
+            data.Append(map.CellSize.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
+            data.Append(map.WallHeight.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
+            Vector3 origin = map.LayoutGrid.transform.localPosition;
+            foreach (float value in new[] { origin.x, origin.y, origin.z })
+                data.Append(value.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
+            foreach (var material in new[] { map.GroundMaterial, map.WallMaterial, map.RiverMaterial })
+                data.Append(AssetDatabase.GetAssetPath(material)).Append('|');
+            foreach (var cells in new[] { floors, rivers })
+            {
+                foreach (Vector2Int cell in cells.OrderBy(c => c.y).ThenBy(c => c.x))
+                    data.Append(cell.x).Append(',').Append(cell.y).Append(';');
+                data.Append('|');
+            }
+            return Hash128.Compute(data.ToString()).ToString();
+        }
+
         private static Mesh SaveMesh(Mesh mesh, string path)
         {
-            mesh.name = Path.GetFileNameWithoutExtension(path);
             var saved = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+            mesh.name = saved != null ? saved.name : Path.GetFileNameWithoutExtension(path);
             if (saved == null) { AssetDatabase.CreateAsset(mesh, path); return mesh; }
             Undo.RegisterCompleteObjectUndo(saved, "Update cave mesh");
             EditorUtility.CopySerialized(mesh, saved);
