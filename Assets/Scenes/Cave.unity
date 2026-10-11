@@ -2230,8 +2230,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca9b8695ecd670a4dac251363bb75d37, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 1606634970}
   viewAngle: 29.293
   distance: 20.5
@@ -2247,8 +2247,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
@@ -2465,8 +2465,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79ee31f14d82324bb36730065cc815f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830085076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,8 +3408,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4dba13ccef717942be06cf470f8115e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   layout: {fileID: 11400000, guid: 63407041032cb4b4c8c41da2a75cc303, type: 2}
   groundMaterial: {fileID: 2100000, guid: bd936b0c552a94f49981282cdd89df73, type: 2}
   wallMaterial: {fileID: 2100000, guid: c900143107561b24d8debc93ea29e1e8, type: 2}
@@ -5279,22 +5279,27 @@ PrefabInstance:
     - target: {fileID: 3887765809260459127, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 3887765809260459127, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 3887765809260459127, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3887765809260459127, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887765809260459127, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4234856885714963197, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
@@ -5304,7 +5309,7 @@ PrefabInstance:
     - target: {fileID: 4234856885714963197, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
       propertyPath: targetCamera
-      value:
+      value: 
       objectReference: {fileID: 758839090}
     - target: {fileID: 6646133995922883305, guid: 7a819b8b503a3c24e852d914a2e0f1e5,
         type: 3}
@@ -5409,8 +5414,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
@@ -6330,8 +6335,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2

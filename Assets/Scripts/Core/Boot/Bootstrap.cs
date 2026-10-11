@@ -8,6 +8,7 @@ namespace Untitled
         {
             RegisterManager(new GameManager());
             RegisterManager(new InputManager());
+            RegisterManager(new UIManager());
         }
 
         private void RegisterManager<T>(ManagerBase<T> manager) where T : ManagerBase<T>
