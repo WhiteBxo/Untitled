@@ -4,6 +4,12 @@
     {
         None = 0,
 
-        Collect = 10001,
+        ToggleESC = 1,
+
+        Interact = 2,
+
+        ScrollSelect = 3,
+
+        CollectItem = 10001,
     }
 }

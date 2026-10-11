@@ -19,12 +19,15 @@ namespace Untitled
             EnableInput();
             inputActions.Player.Move.performed += OnPlayerMove;
             inputActions.Player.Move.canceled += OnPlayerMoveCanceled;
+            inputActions.Player.ESC.performed += OnEscPerformed;
+            inputActions.Player.Interact.performed += OnInteractPerformed;
+            inputActions.Player.Scroll.performed += OnScrollPerformed;
         }
 
         public void EnableInput()
         {
             inputActions.Enable();
-        }   
+        }
 
         public void DisableInput()
         {
@@ -39,6 +42,24 @@ namespace Untitled
         private void OnPlayerMoveCanceled(InputAction.CallbackContext ctx)
         {
             MoveInput = Vector2.zero;
+        }
+
+        private void OnEscPerformed(InputAction.CallbackContext ctx)
+        {
+            EventCenter.Invoke(GameEventType.ToggleESC);
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext ctx)
+        {
+            EventCenter.Invoke(GameEventType.Interact);
+        }
+
+        private void OnScrollPerformed(InputAction.CallbackContext ctx)
+        {
+            float value = ctx.ReadValue<Vector2>().y;
+            if (Mathf.Approximately(value, 0f)) return;
+
+            EventCenter.Invoke(GameEventType.ScrollSelect, value > 0f ? -1 : 1);
         }
     }
 }

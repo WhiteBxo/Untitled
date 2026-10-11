@@ -22,7 +22,9 @@ namespace Untitled
             }
             else
             {
-                itemDict.Add(id, new ItemData(id, num));
+                var item = new ItemData(id, num);
+                Items.Add(item);
+                itemDict.Add(id, item);
             }
         }
 
