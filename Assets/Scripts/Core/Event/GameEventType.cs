@@ -6,6 +6,10 @@
 
         ToggleESC = 1,
 
-        Collect = 10001,
+        Interact = 2,
+
+        ScrollSelect = 3,
+
+        CollectItem = 10001,
     }
 }
