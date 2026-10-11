@@ -30,7 +30,6 @@ namespace Untitled.Editor
                 }
 
                 EditorGUILayout.HelpBox("Paint Floor / River using CavePalette (cell Z = 0). River needs floor beneath it and remains walkable. Save synchronizes 3D meshes and colliders.", MessageType.Info);
-                EditorGUILayout.HelpBox("Foreground Wall Height lowers the camera-facing boundary for the fixed -Z view. Wall Height still controls collisions and the rear walls. Set both heights equal for full walls.", MessageType.Info);
                 try { CaveMapBuilder.Validate(map); }
                 catch (InvalidOperationException error) { EditorGUILayout.HelpBox(error.Message, MessageType.Error); }
                 var floorRenderer = map.FloorTilemap.GetComponent<TilemapRenderer>();
@@ -55,10 +54,34 @@ namespace Untitled.Editor
             var scene = EditorSceneManager.GetActiveScene();
             var maps = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CaveMap>(true)).ToArray();
             if (maps.Length != 1) throw new InvalidOperationException("Open a scene with one CaveMap first.");
+            ConfigureWallReveal(maps[0], scene);
             CaveMapBuilder.Rebuild(maps[0]);
             EditorSceneManager.SaveScene(scene);
-            Debug.Log("Cave cutaway saved: foreground " + maps[0].ForegroundWallHeight +
-                ", full collision height " + maps[0].WallHeight + ".", maps[0]);
+            Debug.Log("Cave wall reveal saved: full walls, dynamic screen-space reveal and unchanged collisions.", maps[0]);
+        }
+
+        private static void ConfigureWallReveal(CaveMap map, UnityEngine.SceneManagement.Scene scene)
+        {
+            if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode first.");
+            var shader = AssetDatabase.LoadAssetAtPath<Shader>("Assets/Shaders/CaveWallReveal.shader");
+            if (shader == null || ShaderUtil.ShaderHasError(shader))
+                throw new InvalidOperationException("Cave wall reveal shader is missing or has compilation errors.");
+            var follow = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CameraController>(true)).Single();
+            if (follow.Target == null) throw new InvalidOperationException("Assign the camera target first.");
+            var visual = follow.Target.GetComponentInChildren<MeshRenderer>();
+            if (visual == null) throw new InvalidOperationException("Assign a player visual renderer.");
+            foreach (var material in new[] { map.GroundMaterial, map.WallMaterial })
+            {
+                Undo.RecordObject(material, "Enable cave wall reveal material");
+                material.shader = shader;
+                EditorUtility.SetDirty(material);
+            }
+            var reveal = map.GetComponent<CaveWallReveal>();
+            if (reveal == null) reveal = Undo.AddComponent<CaveWallReveal>(map.gameObject);
+            var settings = new SerializedObject(reveal);
+            settings.FindProperty("viewCamera").objectReferenceValue = follow.GetComponent<Camera>();
+            settings.FindProperty("targetVisual").objectReferenceValue = visual;
+            settings.ApplyModifiedProperties();
         }
 
         [MenuItem("Untitled/Cave/Enable Scene Tilemap Editing %&t")]

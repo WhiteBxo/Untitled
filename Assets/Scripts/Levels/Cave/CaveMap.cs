@@ -15,8 +15,6 @@ namespace Untitled
         [SerializeField] private Material wallMaterial;
         [SerializeField] private Material riverMaterial;
         [SerializeField, Min(0.1f)] private float wallHeight = 1.5f;
-        [SerializeField, Min(0.1f), Tooltip("Display height of walls with floor behind them, viewed from local -Z. Collisions keep Wall Height. Set equal to Wall Height to disable the cutaway.")]
-        private float foregroundWallHeight = 0.3f;
         [SerializeField] private Transform geometryRoot;
         [SerializeField, HideInInspector] private string geometryAssetPrefix;
         [SerializeField, HideInInspector] private string geometrySceneGuid;
@@ -37,7 +35,6 @@ namespace Untitled
         public Material WallMaterial => wallMaterial;
         public Material RiverMaterial => riverMaterial;
         public float WallHeight => wallHeight;
-        public float ForegroundWallHeight => Mathf.Min(foregroundWallHeight, wallHeight);
         public Transform GeometryRoot => geometryRoot;
         public Vector3 SpawnPosition => spawnPoint.position;
 

@@ -76,7 +76,6 @@ namespace Untitled.Editor
                 }
             }
             var walls = new HashSet<Vector2Int>();
-            var separateCollisionChunks = new HashSet<Vector2Int>(waterChunks.Keys);
             foreach (Vector2Int cell in floors)
                 for (int y = -1; y <= 1; y++) for (int x = -1; x <= 1; x++)
                 {
@@ -86,14 +85,9 @@ namespace Untitled.Editor
             foreach (Vector2Int cell in walls.OrderBy(c => c.y).ThenBy(c => c.x))
             {
                 Vector3 center = map.transform.InverseTransformPoint(map.CellToWorld(cell));
-                // Grid -Y maps to world +Z, behind the wall from the fixed -Z camera.
-                // Cut only the foreground boundary; rear and side walls retain their height.
-                float displayHeight = floors.Contains(cell + Vector2Int.down)
-                    ? map.ForegroundWallHeight : map.WallHeight;
-                GetChunk(cell).Box(center + Vector3.up * displayHeight * 0.5f,
-                    new Vector3(map.CellSize, displayHeight, map.CellSize), 1);
+                GetChunk(cell).Box(center + Vector3.up * map.WallHeight * 0.5f,
+                    new Vector3(map.CellSize, map.WallHeight, map.CellSize), 1, true);
                 Vector2Int key = Key(cell);
-                if (displayHeight < map.WallHeight) separateCollisionChunks.Add(key);
                 if (!collisionChunks.TryGetValue(key, out var collision))
                     collisionChunks.Add(key, collision = new Chunk());
                 collision.Box(center + Vector3.up * map.WallHeight * 0.5f,
@@ -111,7 +105,7 @@ namespace Untitled.Editor
                 go.GetComponent<MeshFilter>().sharedMesh = saved;
                 go.GetComponent<MeshRenderer>().sharedMaterials = new[] { map.GroundMaterial, map.WallMaterial, map.RiverMaterial };
                 // Collisions preserve full wall height and the original flat walk surface.
-                go.GetComponent<MeshCollider>().sharedMesh = separateCollisionChunks.Contains(pair.Key)
+                go.GetComponent<MeshCollider>().sharedMesh = waterChunks.ContainsKey(pair.Key)
                     ? SaveMesh(collisionChunks[pair.Key].Build(name + "_Collision"), path.Replace(".asset", "_Collision.asset"))
                     : saved;
                 if (waterChunks.TryGetValue(pair.Key, out var water))
@@ -172,10 +166,9 @@ namespace Untitled.Editor
 
         private static string ComputeHash(CaveMap map, HashSet<Vector2Int> floors, HashSet<Vector2Int> rivers)
         {
-            var data = new StringBuilder("scene-tilemap-v2-cutaway|");
+            var data = new StringBuilder("scene-tilemap-v3-wall-reveal|");
             data.Append(map.CellSize.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
             data.Append(map.WallHeight.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
-            data.Append(map.ForegroundWallHeight.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
             Vector3 origin = map.LayoutGrid.transform.localPosition;
             foreach (float value in new[] { origin.x, origin.y, origin.z })
                 data.Append(value.ToString("R", System.Globalization.CultureInfo.InvariantCulture)).Append('|');
@@ -230,16 +223,18 @@ namespace Untitled.Editor
                     center + new Vector3(half, 0, half), center + new Vector3(-half, 0, half), Vector3.up, material, banks);
             }
 
-            public void Box(Vector3 center, Vector3 size, int sideMaterial)
+            public void Box(Vector3 center, Vector3 size, int sideMaterial, bool wall = false)
             {
                 float x = size.x * 0.5f, y = size.y * 0.5f, z = size.z * 0.5f;
                 Vector3 V(float px, float py, float pz) => center + new Vector3(px, py, pz);
-                Top(center + Vector3.up * y, size.x, 0);
-                Quad(V(-x,-y,-z), V(x,-y,-z), V(x,y,-z), V(-x,y,-z), Vector3.back, sideMaterial);
-                Quad(V(x,-y,z), V(-x,-y,z), V(-x,y,z), V(x,y,z), Vector3.forward, sideMaterial);
-                Quad(V(-x,-y,z), V(-x,-y,-z), V(-x,y,-z), V(-x,y,z), Vector3.left, sideMaterial);
-                Quad(V(x,-y,-z), V(x,-y,z), V(x,y,z), V(x,y,-z), Vector3.right, sideMaterial);
-                Quad(V(-x,-y,z), V(x,-y,z), V(x,-y,-z), V(-x,-y,-z), Vector3.down, sideMaterial);
+                // Red marks wall geometry, including caps that share the floor material.
+                var mask = new Color(wall ? 1f : 0f, 0f, 0f, 1f);
+                Top(center + Vector3.up * y, size.x, 0, mask);
+                Quad(V(-x,-y,-z), V(x,-y,-z), V(x,y,-z), V(-x,y,-z), Vector3.back, sideMaterial, mask);
+                Quad(V(x,-y,z), V(-x,-y,z), V(-x,y,z), V(x,y,z), Vector3.forward, sideMaterial, mask);
+                Quad(V(-x,-y,z), V(-x,-y,-z), V(-x,y,-z), V(-x,y,z), Vector3.left, sideMaterial, mask);
+                Quad(V(x,-y,-z), V(x,-y,z), V(x,y,z), V(x,y,-z), Vector3.right, sideMaterial, mask);
+                Quad(V(-x,-y,z), V(x,-y,z), V(x,-y,-z), V(-x,-y,-z), Vector3.down, sideMaterial, mask);
             }
 
             public Mesh Build(string name, bool water = false)
@@ -248,7 +243,7 @@ namespace Untitled.Editor
                 mesh.SetVertices(vertices);
                 mesh.SetNormals(normals);
                 mesh.SetUVs(0, uv);
-                if (water) mesh.SetColors(colors);
+                mesh.SetColors(colors);
                 for (int i = 0; i < mesh.subMeshCount; i++) mesh.SetTriangles(triangles[i], i);
                 mesh.RecalculateBounds();
                 return mesh;
