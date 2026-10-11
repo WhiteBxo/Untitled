@@ -1,8 +1,9 @@
 # Untitled
 
-Unity 俯视角（2.5D）经营 / 冒险Demo。
+Unity 2.5D 经营 / 冒险 Demo
 
-玩法循环：**白天经营（Bussiness）→ 购买装备 → 夜晚搜打撤（Adventure）→ 战利品结算 → 进入下一天**。
+玩法循环：**白天经营→ 经营结算 → 夜晚搜打撤→ 战利品结算 → 进入下一天**。
+
 
 ---
 
@@ -10,8 +11,11 @@ Unity 俯视角（2.5D）经营 / 冒险Demo。
 
 | 项 | 版本 |
 | --- | --- |
-| Unity | 2022.3.62f1 |
-| 渲染管线 | URP |
+| Unity | 2022.3.62f3c1 |
+| 渲染管线 | URP 14.0.12 |
+| 输入 | Input System 1.14.2 |
+| 资源加载 | Addressables 1.22.3 |
+| 文本 | TextMeshPro 3.0.7 |
 
 ---
 
@@ -20,21 +24,33 @@ Unity 俯视角（2.5D）经营 / 冒险Demo。
 ```
 Untitled/
 ├─ Assets/
-│  ├─ Art/                            美术资源
-│  │  └─ Audio/ Materials/ Models/ Prefabs/ Sprites/ Textures/
-│  ├─ Input/                          输入配置
-│  ├─ Prefabs/                        预制体
+│  ├─ AddressableAssetsData/          Addressables 配置（UI 面板在 Panel 组，地址 = 面板名）
+│  ├─ Art/                            Audio / Materials / Models / Sprites / Textures
+│  ├─ Configs/Cave/CaveLayout.asset   洞穴布局配置（CaveMapLayout）
+│  ├─ Editor/
+│  │  ├─ Cave/                        CaveMapBuilder / CaveMapEditor / CavePresentationEditor
+│  │  └─ HybridProps/                 HybridPropWindow（道具素材浏览器）
+│  ├─ Input/InputActions.inputactions 输入定义（Player / UI）
+│  ├─ Prefabs/
+│  │  ├─ UI/Menu.prefab               主菜单面板
+│  │  └─ Props/                       可放置道具（Camp / Kitchen / Lighting / TotemsBones）
 │  ├─ Scenes/
-│  │  ├─ Develop.unity                开发/测试场景
-│  │  ├─ Adventure.unity              夜晚冒险场景
-│  │  └─ Bussiness.unity              白天经营场景
+│  │  ├─ Develop.unity                开发 / 测试场景
+│  │  ├─ Cave.unity                   洞穴地图
+│  │  ├─ Adventure.unity              夜晚冒险
+│  │  ├─ Bussiness.unity              白天经营
+│  │  └─ Props/                       HybridPropGallery / ContainerComparison 展厅
 │  ├─ Scripts/
-│  │  ├─ Core/                        运行时核心
-│  │  ├─ Data/                        数据模型
-│  │  ├─ UI/                          UI系统控制
-│  │  └─ Utils/                       通用工具
-│  ├─ Shaders/                        着色器
-│  └─ Settings/
+│  │  ├─ Core/                        Boot / Manager / Event / Camera / Rendering
+│  │  ├─ Data/                        纯 C# 数据（GameData、Inventory、Package、Items、Cave）
+│  │  ├─ Debug/                       HybridGalleryViewer
+│  │  ├─ Gameplay/                    Entity（Player / Collection）、Adventure、Bussiness
+│  │  ├─ Levels/Cave/                 CaveMap / CaveCoordinates
+│  │  └─ UI/                          UIManager / PanelBase / UIPanel / MenuPanel
+│  ├─ Settings/                       URP 配置
+│  └─ Shaders/                        CaveWater、hd2d_pixel_prop
+├─ docs/                              道具清单等文档
+├─ tools/export_cave_layout.gd        洞穴布局导出脚本（离线）
 ├─ Packages/
 └─ ProjectSettings/
 ```
@@ -45,49 +61,73 @@ Untitled/
 
 ### 1. 管理器（Manager）
 
-所有纯C#管理器继承 `ManagerBase<T>`，由 `Bootstrap` 统一注册，之后通过静态 `Instance` 访问：
+纯 C# 管理器继承 `ManagerBase<T>`，由 `Bootstrap` 统一注册，之后通过 `Instance` 单例访问：
 
-```6:16:Assets/Scripts/Core/Boot/Bootstrap.cs
-public class Bootstrap : MonoBehaviour
+```7:13:Assets/Scripts/Core/Boot/Bootstrap.cs
+private void Awake()
 {
-    private void Awake()
-    {
-        RegisterManager(new GameManager());
-        RegisterManager(new InputManager());
-    }
-
-    private void RegisterManager<T>(ManagerBase<T> manager) where T : ManagerBase<T>
-    {
-        manager.Initialize();
-    }
+    RegisterManager(new GameManager());
+    RegisterManager(new InputManager());
+    RegisterManager(new UIManager());
+    RegisterManager(new InteractManager());
 }
 ```
 
-### 2. 数据（Data）
+### 2. 事件中心（EventCenter）
 
-纯 C# 数据类，不依赖 `MonoBehaviour`，便于测试与序列化：
-
-- `GameData` 聚合 **金钱**、`InventoryData`（仓库）、`PackageData`（冒险背包）。
-- 冒险结束时将背包内物品结算进仓库，下一轮冒险开始时清空背包。
-
-### 3. 事件中心（EventCenter）
-
-静态全局事件总线，按 `GameEventType` 订阅，支持 0~3 个参数：
+静态事件总线，按 `GameEventType` 订阅，支持 0~3 个参数：
 
 ```csharp
-EventCenter.Subscribe(GameEventType.Collect, OnCollect);
-EventCenter.Subscribe<int, Vector2>(GameEventType.PlayerDamaged, OnPlayerDamaged);
-EventCenter.Unsubscribe(GameEventType.Collect, OnCollect);
-EventCenter.Invoke(GameEventType.Collect);
+EventCenter.Subscribe(GameEventType.Interact, OnInteract);
+EventCenter.Subscribe<int>(GameEventType.ScrollSelect, OnScrollSelect);
+EventCenter.Unsubscribe(GameEventType.Interact, OnInteract);
+EventCenter.Invoke(GameEventType.Interact);
 ```
 
-### 4. 实体（Entity）
+### 3. 数据（Data）
 
-- `EntityBase`：提供 `Coord`，将世界坐标与地图坐标间映射。
+纯 C# 数据类：
+
+- `GameData` 聚合 `Money`、`InventoryData`（仓库）、`PackageData`（冒险背包）。
+- `InventoryData` / `PackageData` 提供 `AddItem` / `ConsumeItem` / `GetItemCount` / `HasItem` / `Clear`。
+- `ItemData`（id + 数量）、`ItemConfig`（名称 / 类型 / 描述 / 图标）。
+- 冒险结束时把背包物品结算进仓库，下一轮冒险开始时清空背包。
+
+### 4. UI
+
+使用`UIManager`统一管理，添加UI面板后，于 `UIPanel` 中统一注册：
+
+```csharp
+UIManager.Instance.Open(UIPanel.Menu); 
+UIManager.Instance.Close(UIPanel.Menu);
+UIManager.Instance.Unload(UIPanel.Menu);
+```
+
+- 面板脚本继承 `PanelBase`，并重写 `OnInit` / `OnShow` / `OnHide`。
+
+### 5. 交互
+
+可交互对象（可拾取物品、道具、NPC等）实现接口 `IInteractable`。
+
+```csharp
+public class Collection : EntityBase, IInteractable
+{
+    public void Interact() {}
+}
+```
+
+### 6. 实体与镜头
+
+- `EntityBase`：`Coord` 映射 XZ 平面与世界坐标。
 - `CharacterBase`：封装胶囊碰撞体与移动逻辑。
-- `PlayerEntity`：封装玩家控制。
+- `PlayerEntity`：封装玩家输入。
 
----
+### 7. 洞穴地图
+
+- `CaveMapLayout`（`Assets/Configs/Cave/CaveLayout.asset`）：格子尺寸、原点、地面 / 墙体 / 河水材质、出生点。
+- `CaveMap`：按布局生成地图，提供 `CellToWorld` / `WorldToCell` / `IsWalkable` / `SpawnPosition`。
+- `CaveCoordinates`：像素、格子与本地坐标互转。
+- Editor 工具在 `Assets/Editor/Cave/`，布局源文件由 `tools/export_cave_layout.gd` 离线导出。
 
 
 ## 可放置道具素材
@@ -95,3 +135,11 @@ EventCenter.Invoke(GameEventType.Collect);
 41 个预制体已按厨房、营地、图腾骨饰、照明整理到 `Assets/Prefabs/Props`，模型与材质位于 `Assets/Art` 对应分类。保留水缸、锅的 3D 版本，并提供对应 HD-2D 版本。
 
 Unity 菜单 **Untitled → Props → 素材浏览器** 可预览、调节大小与放入场景；完整展厅与容器对照场景在 `Assets/Scenes/Props`。详见 [可放置道具说明与清单](docs/placeable_props.md)。
+
+HD-2D 道具由 `HybridProp`（像素帧 + UV 偏移）驱动，通常配合 `SpriteBillboard`（视觉子对象朝向镜头）与 `HybridFireLight`（火光）使用。
+
+---
+
+## 其他
+
+开发约定、目录职责与提交规范见 [AGENTS.md](AGENTS.md)。
